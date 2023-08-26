@@ -1,3 +1,3 @@
-module github.com/romarioarruda/go-expert
+module go-expert
 
 go 1.20
