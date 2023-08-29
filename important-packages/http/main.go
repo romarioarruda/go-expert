@@ -26,7 +26,7 @@ func main() {
 	}
 
 	var gitUser User
-	err = json.Unmarshal(resp, &gitUser) //Transform json in a acessible Struct or object
+	err = json.Unmarshal(resp, &gitUser) //Transform json in an acessible Struct or object
 	if err != nil {
 		panic(err)
 	}
