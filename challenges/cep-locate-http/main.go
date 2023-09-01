@@ -30,14 +30,15 @@ func HandleCep(resp http.ResponseWriter, req *http.Request) {
 		return
 	}
 	
-	finalJson, err := json.Marshal(result)
-	if err != nil {
-		resp.WriteHeader(http.StatusInternalServerError)
-		resp.Write([]byte(`{"msg": "There was an error trying to convert json result"}`))
-		return
-	}
+	// finalJson, err := json.Marshal(result) //Convert struct in Json value
+	// if err != nil {
+	// 	resp.WriteHeader(http.StatusInternalServerError)
+	// 	resp.Write([]byte(`{"msg": "There was an error trying to convert json result"}`))
+	// 	return
+	// }
 
-	resp.Write(finalJson)
+	// resp.Write(finalJson)
+	json.NewEncoder(resp).Encode(result) //Convert struct in json data
 }
 
 func FindCep(cep string) (*viacep.ViaCep, error) {
@@ -55,7 +56,7 @@ func FindCep(cep string) (*viacep.ViaCep, error) {
 
 	var cepResult viacep.ViaCep
 
-	err = json.Unmarshal(body, &cepResult)
+	err = json.Unmarshal(body, &cepResult) //Transform json in an acessible Struct
 	if err != nil {
 		return nil, err
 	}
