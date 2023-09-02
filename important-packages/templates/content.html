@@ -1,0 +1,11 @@
+{{ template "header.html" }}
+<ul>
+    {{ range . }}
+        {{ if eq .Hour 40}}
+            <li>{{ .Name }} > {{ .Hour }}</li>
+        {{ end }}
+
+        <li>{{ .Name }} - {{ .Hour }}</li>
+    {{ end }}
+</ul>
+{{ template "footer.html" }}
