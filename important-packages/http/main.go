@@ -5,6 +5,7 @@ import (
 	"io"
 	"fmt"
 	"net/http"
+	"time"
 )
 
 type User struct {
@@ -13,7 +14,8 @@ type User struct {
 }
 
 func main() {
-	req, err := http.Get("https://api.github.com/users/romarioarruda")
+	client := http.Client{Timeout: time.Second * 5}
+	req, err := client.Get("https://api.github.com/users/romarioarruda")
 	if err != nil {
 		panic(err)
 	}
