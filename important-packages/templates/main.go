@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"strings"
 	"html/template"
 )
 
@@ -21,7 +22,7 @@ func main() {
 
 	tmp := template.Must(
 		// template.New("MyTemplate").Parse("Course: {{ .Name }} - Hour: {{ .Hour }}"),
-		template.New("content.html").ParseFiles(htmlTemplates...),
+		template.New("content.html").Funcs(template.FuncMap{"ToUpper": strings.ToUpper}).ParseFiles(htmlTemplates...),
 	)
 
 	//If you working with http, replace os.Stdout for http.ResponseWriter

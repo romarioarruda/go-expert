@@ -5,7 +5,7 @@
             <li>{{ .Name }} > {{ .Hour }}</li>
         {{ end }}
 
-        <li>{{ .Name }} - {{ .Hour }}</li>
+        <li>{{ .Name | ToUpper }} - {{ .Hour }}</li>
     {{ end }}
 </ul>
 {{ template "footer.html" }}
