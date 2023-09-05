@@ -72,7 +72,7 @@ func customizedRequest(client http.Client) {
 	}
 
 	req.Header.Set("Accept", "application/json")
-	resp, err := client.Do(req) //permorf the request
+	resp, err := client.Do(req) //perform the request
 	if err != nil {
 		panic(err)
 	}
