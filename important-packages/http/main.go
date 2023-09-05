@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"io"
+	"os"
 	"fmt"
 	"net/http"
 	"time"
@@ -15,7 +17,16 @@ type User struct {
 
 func main() {
 	client := http.Client{Timeout: time.Second * 5}
-	req, err := client.Get("https://api.github.com/users/romarioarruda")
+
+	fmt.Println("Perfoming GET...")
+	getGithubUser("romarioarruda", client)
+
+	fmt.Println("Perfoming POST...")
+	postGithubUser(client)
+}
+
+func getGithubUser(userName string, client http.Client) {
+	req, err := client.Get("https://api.github.com/users/" + userName)
 	if err != nil {
 		panic(err)
 	}
@@ -35,4 +46,17 @@ func main() {
 
 	fmt.Println("Resp: ", gitUser)
 	fmt.Println("gitUser login: ", gitUser.Login)
+}
+
+func postGithubUser(client http.Client) {
+	url := "https://api.github.com/users/romarioarruda"
+	fmt.Println("URL: ", url)
+	body := []byte(`{ userName: romarioarruda }`)
+	resp, err := client.Post(url, "application/json", bytes.NewBuffer(body))
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+
+	io.CopyBuffer(os.Stdout, resp.Body, nil)
 }
