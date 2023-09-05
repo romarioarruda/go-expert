@@ -23,6 +23,9 @@ func main() {
 
 	fmt.Println("Perfoming POST...")
 	postGithubUser(client)
+
+	fmt.Println("\nPerfoming customized request...")
+	customizedRequest(client)
 }
 
 func getGithubUser(userName string, client http.Client) {
@@ -59,4 +62,26 @@ func postGithubUser(client http.Client) {
 	defer resp.Body.Close()
 
 	io.CopyBuffer(os.Stdout, resp.Body, nil)
+}
+
+func customizedRequest(client http.Client) {
+	url := "https://api.github.com/users/romarioarruda"
+	req, err := http.NewRequest("GET", url, nil) //nil is the body of request
+	if err != nil {
+		panic(err)
+	}
+
+	req.Header.Set("Accept", "application/json")
+	resp, err := client.Do(req) //permorf the request
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		panic(err)
+	}
+
+	println(string(body))
 }
