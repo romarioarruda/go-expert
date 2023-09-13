@@ -3,6 +3,25 @@ Golang repository to study basic and advanced concepts of the language
 
 ##
 
+**Package manager**
+
+Initializing:
+```
+$ go mod init
+```
+
+To install packages:
+```
+$ go get -u github.com/package-name
+```
+
+To update version control into go.mod file:
+```
+$ go mod tidy
+```
+
+##
+
 **Useful links**
 - [Convert Json data to Go Struct](https://transform.tools/json-to-go)
 - [Go Documentation](https://go.dev/doc/)
@@ -13,6 +32,9 @@ Golang repository to study basic and advanced concepts of the language
 - [Go Text Templates](https://pkg.go.dev/text/template)
 - [Go Html Templates](https://pkg.go.dev/html/template)
 - [Go Context](https://pkg.go.dev/context)
+- [Go UUID](https://pkg.go.dev/github.com/google/uuid)
+- [Go SQL](https://pkg.go.dev/database/sql)
+- [Go MySQL Driver](https://github.com/go-sql-driver/mysql)
 
 
 ##
