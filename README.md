@@ -12,7 +12,7 @@ $ go mod init
 
 To install packages:
 ```
-$ go get -u github.com/package-name
+$ go get -u package-name-url
 ```
 
 To update version control into go.mod file:
@@ -35,6 +35,7 @@ $ go mod tidy
 - [Go UUID](https://pkg.go.dev/github.com/google/uuid)
 - [Go SQL](https://pkg.go.dev/database/sql)
 - [Go MySQL Driver](https://github.com/go-sql-driver/mysql)
+- [Go ORM](https://gorm.io/docs/index.html)
 
 
 ##
