@@ -6,10 +6,17 @@ import (
 	"gorm.io/driver/mysql"
 )
 
+type Category struct {
+	ID int `gorm:"primaryKey"`
+	Name string
+}
+
 type User struct {
 	ID	  int `gorm:"primaryKey"`
 	Name  string
 	Email string
+	CategoryID int
+	Category Category
 	gorm.Model
 }
 
@@ -19,13 +26,16 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	db.AutoMigrate(&User{})
+	db.AutoMigrate(&User{}, &Category{})
+	fmt.Println("Migration finished successfuly")
 
 	//simple create
+	// category := Category{ Name: "Admin"}
+	// db.Create(&category)
 	// db.Create(&User{
-	// 	ID: 1,
-	// 	Name: "Romário Dev",
-	// 	Email: "romariodev@gmail.com",
+	// 	CategoryID: 1,
+	// 	Name: "Romário Dev 2",
+	// 	Email: "romariodev2@gmail.com",
 	// })
 
 	//create in batch
@@ -60,6 +70,13 @@ func main() {
 	// 	fmt.Println(rowUser)
 	// }
 
+	//select users and relationship categories using Belongs to technique
+	var users []User
+	db.Preload("Category").Find(&users)
+	for _, rowUser := range users {
+		fmt.Printf("User: %v, Category: %v\n", rowUser.Name, rowUser.Category.Name)
+	}
+
 	//Update record
 	// var user User
 	// db.First(&user, 1)
@@ -67,8 +84,8 @@ func main() {
 	// db.Save(&user)
 
 	//Delete record
-	var user2 User
-	db.First(&user2, 1)
-	db.Delete(&user2)
-	fmt.Println("User deleted: ", user2.ID)
+	// var user2 User
+	// db.First(&user2, 1)
+	// db.Delete(&user2)
+	// fmt.Println("User deleted: ", user2.ID)
 }
