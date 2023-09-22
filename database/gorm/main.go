@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"gorm.io/gorm"
+	"gorm.io/gorm/clause"
 	"gorm.io/driver/mysql"
 )
 
@@ -71,11 +72,11 @@ func main() {
 	// }
 
 	//select users and relationship categories using Belongs to technique
-	var users []User
-	db.Preload("Category").Find(&users)
-	for _, rowUser := range users {
-		fmt.Printf("User: %v, Category: %v\n", rowUser.Name, rowUser.Category.Name)
-	}
+	// var users []User
+	// db.Preload("Category").Find(&users)
+	// for _, rowUser := range users {
+	// 	fmt.Printf("User: %v, Category: %v\n", rowUser.Name, rowUser.Category.Name)
+	// }
 
 	//Update record
 	// var user User
@@ -88,4 +89,20 @@ func main() {
 	// db.First(&user2, 1)
 	// db.Delete(&user2)
 	// fmt.Println("User deleted: ", user2.ID)
+
+	//Transaction / Pessimistic lock
+	transaction := db.Begin()
+	var category Category
+	err = transaction.Debug().Clauses(clause.Locking{Strength: "UPDATE"}).First(&category, 2).Error
+	if err != nil {
+		panic(err)
+	}
+
+	category.Name = "Operator"
+	transaction.Debug().Save(&category)
+	transaction.Commit()
+
+	//Default way to perform transaction
+	var user User
+	db.Debug().Clauses(clause.Locking{Strength: "UPDATE"}).First(&user, "email = ?", "romariodev@gmail.com")
 }
