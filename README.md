@@ -5,19 +5,31 @@ Golang repository to study basic and advanced concepts of the language
 
 **Package manager**
 
-Initializing:
+Module initializing:
 ```
 $ go mod init
 ```
 
-To install packages:
+To install package:
 ```
 $ go get -u package-name-url
 ```
 
-To update version control into go.mod file:
+Packaging update and control of version in go.mod:
 ```
 $ go mod tidy
+```
+
+Replace package module in dev environment (workaround):
+```
+$ go mod edit -replace package-name-url=internal-package-path
+$ go mod tidy
+```
+
+Replace package module in dev environment using workspace (correct approach):
+```
+$ go work init internal-package-path-1 internal-package-path-2
+$ go mod tidy -e
 ```
 
 ##
