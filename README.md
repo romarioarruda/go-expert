@@ -34,6 +34,20 @@ $ go mod tidy -e
 
 ##
 
+**Unit Test with Testing module from golang**
+
+Running tests generating code coverage information in verbose mode
+```
+$ go test -coverprofile=coverage.out -v
+```
+
+Visualizing where needs to cover in HTML format
+```
+$ go tool cover -html=coverage.out
+```
+
+##
+
 **Useful links**
 - [Convert Json data to Go Struct](https://transform.tools/json-to-go)
 - [Go Documentation](https://go.dev/doc/)
@@ -48,6 +62,7 @@ $ go mod tidy -e
 - [Go SQL](https://pkg.go.dev/database/sql)
 - [Go MySQL Driver](https://github.com/go-sql-driver/mysql)
 - [Go ORM](https://gorm.io/docs/index.html)
+- [Go Testing](https://pkg.go.dev/testing)
 
 
 ##
