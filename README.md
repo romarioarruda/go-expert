@@ -46,6 +46,16 @@ Visualizing where needs to cover in HTML format
 $ go tool cover -html=coverage.out
 ```
 
+Benchmark visualization
+```
+$ go test -bench=. -run=^# -benchmem
+```
+
+Need help ?
+```
+$ go help test
+```
+
 ##
 
 **Useful links**
