@@ -51,6 +51,11 @@ Benchmark visualization
 $ go test -bench=. -run=^# -benchmem
 ```
 
+Performing test with Fuzzing
+```
+$ go test -fuzz=. -run=^# -fuzztime=5s
+```
+
 Need help ?
 ```
 $ go help test
