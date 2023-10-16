@@ -34,7 +34,7 @@ $ go mod tidy -e
 
 ##
 
-**Unit Test with Testing module from golang**
+**Running unit tests**
 
 Running tests generating code coverage information in verbose mode
 ```
