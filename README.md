@@ -77,7 +77,7 @@ $ go tool dist list
 
 Need help ?
 ```
-$ go help test
+$ go help
 ```
 
 ##
