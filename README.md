@@ -56,7 +56,9 @@ Performing test with Fuzzing
 $ go test -fuzz=. -run=^# -fuzztime=5s
 ```
 
-Performing build of application
+##
+**Performing build of application**
+
 ```
 MacOS
 $ GOOS=darwin GOARCH=os_arch_name go build -o service-name
