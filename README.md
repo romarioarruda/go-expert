@@ -59,13 +59,13 @@ $ go test -fuzz=. -run=^# -fuzztime=5s
 Performing build of application
 ```
 MacOS
-$ GOOS=darwin GOARCH=os_arch_name go build main.go
+$ GOOS=darwin GOARCH=os_arch_name go build -o service-name
 
 Linux
-$ GOOS=linux GOARCH=os_arch_name go build main.go
+$ GOOS=linux GOARCH=os_arch_name go build -o service-name
 
 Windows
-$ GOOS=windows GOARCH=os_arch_name go build main.go
+$ GOOS=windows GOARCH=os_arch_name go build -o service-name
 ```
 
 To see all supported platforms
