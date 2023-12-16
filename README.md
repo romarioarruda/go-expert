@@ -56,6 +56,23 @@ Performing test with Fuzzing
 $ go test -fuzz=. -run=^# -fuzztime=5s
 ```
 
+Performing build of application
+```
+MacOS
+$ GOOS=darwin GOARCH=os_arch_name go build main.go
+
+Linux
+$ GOOS=linux GOARCH=os_arch_name go build main.go
+
+Windows
+$ GOOS=windows GOARCH=os_arch_name go build main.go
+```
+
+To see all supported platforms
+```
+$ go tool dist list
+```
+
 Need help ?
 ```
 $ go help test
