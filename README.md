@@ -81,7 +81,9 @@ $ go help
 ```
 
 ##
-**Kubernetes Owerview (considering you have already configured the deployment.yaml and service.yaml)**
+**Kubernetes Owerview**
+
+`considering you have already configured the deployment.yaml and service.yaml`
 
 Create a kubernetes cluster using Kind tool
 ```
