@@ -1,6 +1,0 @@
-mode: set
-go-expert/testing/example-1/tax.go:3.43,4.17 1 1
-go-expert/testing/example-1/tax.go:4.17,6.3 1 1
-go-expert/testing/example-1/tax.go:8.2,8.19 1 1
-go-expert/testing/example-1/tax.go:8.19,10.3 1 1
-go-expert/testing/example-1/tax.go:12.2,12.12 1 1
