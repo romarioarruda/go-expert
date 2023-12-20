@@ -81,6 +81,61 @@ $ go help
 ```
 
 ##
+**Kubernetes Owerview (considering you have already configured the deployment.yaml and service.yaml)**
+
+Create a kubernetes cluster using Kind tool
+```
+$ kind create cluster --name=some-name-here
+```
+
+To see the cluster
+```
+$ kubectl get nodes
+```
+
+To delete a cluster
+```
+$ kind delete cluster --name=cluster-name
+```
+
+Up the pods (according to your replicas configured on deployment.yaml)
+```
+$ kubectl apply -f deployment.yaml
+```
+
+To see all pods upper
+```
+$ kubectl get pods
+```
+
+To delete pods
+```
+$ kubectl delete pods service-name
+```
+
+Up the services to enable the access between pods (according to your service.yaml)
+```
+$ kubectl apply -f service.yaml
+```
+
+To see all services upper
+```
+$ kubectl get svc
+```
+
+To delete services
+```
+$ kubectl delete svc service-name
+```
+
+Forwarding the access for your localhost
+```
+$ kubectl port-forward svc/serverscv port:port
+
+"serverscv" and the ports was declared in service.yaml
+```
+
+##
 
 **Useful links**
 - [Convert Json data to Go Struct](https://transform.tools/json-to-go)
@@ -98,6 +153,8 @@ $ go help
 - [Go ORM](https://gorm.io/docs/index.html)
 - [Go Testing](https://pkg.go.dev/testing)
 - [Go Testify](https://github.com/stretchr/testify)
+- [Kubernetes](https://kubernetes.io/docs/tasks/tools/)
+- [Kind K8S](https://kind.sigs.k8s.io/)
 
 
 ##
