@@ -155,6 +155,8 @@ $ kubectl port-forward svc/serverscv port:port
 - [Go ORM](https://gorm.io/docs/index.html)
 - [Go Testing](https://pkg.go.dev/testing)
 - [Go Testify](https://github.com/stretchr/testify)
+- [Viper](https://github.com/spf13/viper)
+- [Go-Chi JWT](https://github.com/go-chi/jwtauth)
 - [Kubernetes](https://kubernetes.io/docs/tasks/tools/)
 - [Kind K8S](https://kind.sigs.k8s.io/)
 
