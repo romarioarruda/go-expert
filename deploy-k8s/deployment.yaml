@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server
+spec:
+  selector:
+    matchLabels:
+      app: server
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      containers:
+      - name: server
+        image: romario09/deploy-k8s
+        #health check
+        startupProbe:
+          httpGet:
+            path: /
+            port: 9000
+          periodSeconds: 10
+          failureThreshold: 10
+        #valida se o serviço está com algum problema. Se sim, para o tráfego para o pod 
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 9000
+          periodSeconds: 10
+          failureThreshold: 2
+          timeoutSeconds: 10
+        #valida se o serviço está up. Se ficar off por muitas vezes, recria o pod.
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 9000
+          periodSeconds: 10
+          failureThreshold: 3
+          successThreshold: 1
+          timeoutSeconds: 5
+        ports:
+        - containerPort: 9000
+        resources:
+          limits:
+            memory: "32Mi"
+            cpu: "100m"

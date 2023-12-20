@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: serverscv
+spec:
+  selector:
+    app: server
+  type: LoadBalancer
+  ports:
+  - port: 9000
+    targetPort: 9000
