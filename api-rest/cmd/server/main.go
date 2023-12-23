@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	config, _ := configs.LoadConfig(".env")
+	config, _ := configs.LoadConfig()
 
 	fmt.Printf("Config %v", config)
 }

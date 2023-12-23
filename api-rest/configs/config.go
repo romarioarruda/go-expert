@@ -18,13 +18,12 @@ type config struct {
 	TokenAuth     *jwtauth.JWTAuth
 }
 
-func LoadConfig(path string) (*config, error) {
+func LoadConfig() (*config, error) {
 	var configs *config
 
 	viper.SetConfigName("app_config")
 	viper.SetConfigType("env")
-	viper.AddConfigPath(path)
-	viper.SetConfigFile(".env")
+	viper.SetConfigFile("cmd/server/.env")
 	viper.AutomaticEnv()
 
 	err := viper.ReadInConfig()
